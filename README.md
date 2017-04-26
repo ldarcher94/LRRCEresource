@@ -9,7 +9,7 @@ Supervisor: Dr. Jordi Bella
 To run the server and view the resource in a browser:
   1. Clone repository to local machine
   2. Open command line and navigate to root file of repository (File that contains manage.py)
-  3. Run server with this command - $ python3 manage.py runserver
+  3. Run server with this command --  python3 manage.py runserver
     (System should perform checks and identify 0 issues)
   4. Open browser, and in the address bar enter: localhost:8000/catalog/
     This is the homepage of the resource, and from here you should be able to navigate around 
