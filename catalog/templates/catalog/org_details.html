@@ -1,0 +1,132 @@
+{% extends "base-menu.html" %}
+
+{% block title %}<title>{{ organism.name }}</title>{% endblock %}
+
+{% block content %}
+
+
+<h1>{{ organism.name }}</h1>
+
+    {% block imagetable %}
+        <!-- Image table with links to page sections -->
+        {% load static %}
+        <table>
+            <tr>
+                <td class="tab_row_head">Chr 9q22</td>
+                <td><a href="#h201"><img src="{% static 'img/SLRP-buttons/ECM2.png' %}"></a></td>
+                <td><a href="#h202"><img src="{% static 'img/SLRP-buttons/ASPN.png' %}"></a></td>
+                <td class="tab_empty_cell"></td>
+                <td><a href="#h203"><img src="{% static 'img/SLRP-buttons/OMD.png' %}"></a></td>
+                <td><a href="#h204"><img src="{% static 'img/SLRP-buttons/OGN.png' %}"></a></td>
+            </tr>
+            <tr>
+                <td class="tab_row_head">Chr 12q21</td>
+                <td class="tab_empty_cell"></td>
+                <td><a href="#h205"><img src="{% static 'img/SLRP-buttons/DCN.png' %}"></a></td>
+                <td><a href="#h206"><img src="{% static 'img/SLRP-buttons/LUM.png' %}"></a></td>
+                <td><a href="#h207"><img src="{% static 'img/SLRP-buttons/KERA.png' %}"></a></td>
+                <td><a href="#h208"><img src="{% static 'img/SLRP-buttons/EPYC.png' %}"></a></td>
+            </tr>
+            <tr>
+                <td class="tab_row_head">Chr 1q32</td>
+                <td class="tab_empty_cell"></td>
+                <td class="tab_empty_cell"></td>
+                <td><a href="#h209"><img src="{% static 'img/SLRP-buttons/FMOD.png' %}"></a></td>
+                <td><a href="#h210"><img src="{% static 'img/SLRP-buttons/PRELP.png' %}"></a></td>
+                <td><a href="#h211"><img src="{% static 'img/SLRP-buttons/OPTC.png' %}"></a></td>
+            </tr>
+            <tr>
+                <td class="tab_row_head">Chr Xq28</td>
+                <td><a href="#h212"><img src="{% static 'img/SLRP-buttons/ECMX.png' %}"></a></td>
+                <td><a href="#h213"><img src="{% static 'img/SLRP-buttons/BGN.png' %}"></a></td>
+                <td class="tab_empty_cell"></td>
+                <td class="tab_empty_cell"></td>
+                <td class="tab_empty_cell"></td>
+            </tr>
+        </table>
+    {% endblock %}
+        
+        {% for gene in org_details.gene_set.all %}
+            <!-- First sub-heading -->
+            <h2 class="{{ gene.class_field }}" id="h201">{{ gene.title }}</h2>
+            
+            <!-- Table with information for First gene -->
+            <table>
+                <tr>
+                    <td class="tab2_left"><i>Name</i></td>
+                    <td>{{ gene.name }}</td>
+                </tr>
+                <tr>
+                    <td class="tab2_left"><i>Protein Existence</i></td>
+                    <td>{{ gene.existence }}</td>
+                </tr>
+                <tr>
+                    <td class="tab2_left_head"><i>Primary Links</i></td>
+                </tr>
+                <tr>
+                    {% for link in gene.link_set.all %}
+                        {% if link.primary %}
+                    <td class="tab2_left">{{ link.link_type }}</td>
+                    <td><a href="{{ link.link_address }}">{{ link.link_accession }}</a></td>
+                </tr>   {% endif %}
+                    {% endfor %}
+                <tr>
+                    <td class="tab2_left_head"><i>Other Links</i></td>
+                </tr>
+                <tr>
+                    {% for link in gene.link_set.all %}
+                        {% if link.primary %}
+                        {% else %}
+                            
+                    <td class="tab2_left">{{ link.link_type }}</td>
+                    <td><a href="{{ link.link_address }}">{{ link.link_accession }}</a></td>
+                </tr>
+                        {% endif %}
+                    {% endfor %}        
+                <tr>
+                    <td class="tab2_left_fasta"><i>LRRCE Sequence</i></td>
+                    <td class="fasta">{{ gene.lrrce_seq }}
+                    </td>
+                </tr>
+                {% if gene.uniprot_seq %}        
+                <tr>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(uniprot)<br>699 amino acids</i></td>
+                    <td class="fasta">{{ gene.uniprot_seq }}
+                    </td>
+                </tr>
+                {% endif %}
+                {% if gene.ncbi_seq %}
+                <tr>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(NCBI)<br>699 amino acids</i></td>
+                    <td class="fasta">{{ gene.ncbi_seq }}
+                    </td>  
+                </tr>
+                {% endif %}
+                {% if gene.genbank_seq %}
+                <tr>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(genbank)<br>699 amino acids</i></td>
+                    <td class="fasta">{{ gene.genbank_seq }}
+                    </td>
+                </tr>
+                {% endif %}
+                {% if gene.genscan_pred_seq %}
+                <tr>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(genscan prediction)<br>699 amino acids</i></td>
+                    <td class="fasta">{{ gene.genscan_pred_seq }}
+                    </td>
+                </tr>
+                {% endif %}
+                {% if gene.ensembl_seq %}
+                <tr>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(ensembl)<br>699 amino acids</i></td>
+                    <td class="fasta">{{ gene.ensembl_seq }}
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td class="tab2_left_head"><a href="#top">Back to Top</a></td>
+                </tr>
+            </table> 
+        {% endfor %}
+    
+{% endblock %}

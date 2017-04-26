@@ -1,0 +1,47 @@
+{% extends "base-menu.html" %}
+
+{% block title %}Home{% endblock %}
+
+
+    {% block content %}
+        
+        <h1 id="homepage">The LRRCE Website</h1>
+        
+        {% load static %}
+        <img id="homeimg" src="{% static 'img/Tree-small.png' %}">
+        
+        <div id="warning">
+            <h3>N.B.</h3>
+                <p><i>This site is still in a developmental version. As such, some features will not be fully functional whilst the project
+                    is run on a development server (like the one provided by Django). Such as:</i></p>
+                <ul id="warning_list">
+                    <li>External links</li>
+                    <li>Google powered search function</li>
+                <ul>
+        </div>
+        
+        <p>This site provides updated sequence information of SLRPs from classes A, I, II and III.</p>
+        
+        <!-- Google Custom Search Element -->
+        <div id=”cse” style=”width:100%;”>Loading</div>
+        <script src=”http://www.google.com/jsapi” type=”text/javascript”></script>
+        <script type=”text/javascript”>google.load(‘search’, ‘1’);
+          google.setOnLoadCallback(function(){var cse = new google.search.
+          CustomSearchControl();cse.draw(‘cse’);}, true);</script>
+        
+        <h3>Reference:</h3>
+        
+        <p>LRRCE: a leucine-rich repeat cysteine capping motif unique to the chordate lineage <br>
+            Hosil Park, Julie Huxley-Jones, Ray P Boot-Handford, Paul N Bishop, Teresa K Attwood and Jordi Bella<br>
+        
+            <!-- Possibly alter link below, i.e. change colour or underline etc. -->
+            <a href="http://bmcgenomics.biomedcentral.com/articles/10.1186/1471-2164-9-599"><i>BMC</i> Genomics 2008, 9:599</a>
+        </p>
+        
+        <h4>Comments, Errors, Suggestions</h4>
+        
+        <p>Please contact us:<br><a href="mailto: jordi.bella@manchester.ac.uk">jordi.bella@manchester.ac.uk</a></p>
+        
+        <p><strong>Last update:</strong> 17/04/2017</p>
+        
+    {% endblock %}

@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en-UK">
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
+	</head>
+
+	<body>
+        
+        {% block menubar %}
+        <!-- Menu bar across top of page -->
+        <ul id="menu">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'organisms' %}">Organisms</a></li>
+            <!--
+            <li><a href="#LRRCE-PUBS">Publications</a></li>
+            <li><a href="LRRCE-USEFUL">Useful Links</a></li>
+            <li><a href="LRRCE-CONTACT">Contact Us</a></li>     -->
+        </ul>
+        {% endblock %}
+        
+        {% block content %}{% endblock %}
+        
+        
+	</body>
+</html>

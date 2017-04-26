@@ -1,0 +1,62 @@
+{% extends "base-gene.html" %}
+
+{% block content %}
+
+    {% if gene_list %}
+        
+        {% for gene in gene_list %}
+            <!-- First sub-heading -->
+            <h2 class="{{ gene.class_field }}" id="h201">{{ gene.title }}</h2>
+            
+            <!-- Table with information for First gene -->
+            <table>
+                <tr>
+                    <td class="tab2_left"><i>Name</i></td>
+                    <td>{{ gene.name }}</td>
+                </tr>
+                <tr>
+                    <td class="tab2_left"><i>Protein Existence</i></td>
+                    <td>{{ gene.existence }}</td>
+                </tr>
+                <tr>
+                    <td class="tab2_left_head"><i>Primary Links</i></td>
+                </tr>
+                <tr>
+                    <td class="tab2_left">UniProt</td>
+                    <td><a></a></td>
+                </tr>
+                <tr>
+                    <td class="tab2_left">NCBI</td>
+                    <td><a></a></td>
+                </tr>
+                <tr>
+                    <td class="tab2_left">ENSEMBL</td>
+                    <td><a></a></td>
+                </tr>
+                <tr>
+                    <td class="tab2_left_head"><i>Other Links</i></td>
+                </tr>
+                <tr>
+                    <td class="tab2_left">TrEMBL</td>
+                    <td>
+                
+                    </td>
+                </tr>           
+                <tr>
+                    <td class="tab2_left_fasta"><i>LRRCE Sequence</i></td>
+                    <td class="fasta">{{ gene.lrrce_seq }}
+                    </td>
+                </tr>         
+                <tr>
+                    <td class="tab2_left_fasta"><i>FASTA<br>699 amino acids</i></td>
+                    <td class="fasta">{{ gene.uniprot_seq }}
+                    </td>
+                </tr>          
+                <tr>
+                    <td class="tab2_left_head"><a href="#top">Back to Top</a></td>
+                </tr>
+            </table>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+    
