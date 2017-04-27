@@ -1,16 +1,16 @@
 {% extends "base-menu.html" %}
 
-{% block title %}{{ organism.name }}{% endblock %}
+{% block title %}{{ org_details.name }}{% endblock %}
 
 {% block content %}
 
 
-<h1>{{ organism.name }}</h1>
+<h1>{{ org_details.name }}</h1>
 
     {% block imagetable %}
         <!-- Image table. In future this will contain links to page sections -->
         
-        {% if organism.name == "Human" %}
+        {% if org_details.name == 'Human' %}
         <table>
             <tr>{% load static %}
                 <td class="tab_row_head">Chr 9q22</td>
@@ -92,35 +92,35 @@
                 </tr>
                 {% if gene.uniprot_seq %}        
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(uniprot)<br>{{ gene.uniprot_seq|fasta_length }}</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(uniprot)<br></i></td>
                     <td class="fasta">{{ gene.uniprot_seq }}
                     </td>
                 </tr>
                 {% endif %}
                 {% if gene.ncbi_seq %}
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(NCBI)<br>{{ gene.ncbi_seq|fasta_length }}</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(NCBI)<br></i></td>
                     <td class="fasta">{{ gene.ncbi_seq }}
                     </td>  
                 </tr>
                 {% endif %}
                 {% if gene.genbank_seq %}
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(genbank)<br>{{ gene.genbank_seq|fasta_length }}</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(genbank)<br></i></td>
                     <td class="fasta">{{ gene.genbank_seq }}
                     </td>
                 </tr>
                 {% endif %}
                 {% if gene.genscan_pred_seq %}
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(genscan prediction)<br>699 amino acids</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(genscan prediction)<br></i></td>
                     <td class="fasta">{{ gene.genscan_pred_seq }}
                     </td>
                 </tr>
                 {% endif %}
                 {% if gene.ensembl_seq %}
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(ensembl)<br>699 amino acids</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(ensembl)<br></i></td>
                     <td class="fasta">{{ gene.ensembl_seq }}
                     </td>
                 </tr>
