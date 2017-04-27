@@ -12,7 +12,7 @@
             <div class="double_div" id="mammals">
                 <h3>Mammals</h3>
                 
-                {% for org in organism_list|group_org_by_taxonomy:'Mammal' %}
+                {% for org in organism_list|filter_by_taxonomy:'Mammal' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}
             </div>
@@ -21,7 +21,7 @@
             <div class="single_div" id="fish">
                 <h3>Fish</h3>
 
-                {% for org in organism_list|group_org_by_taxonomy:'Fish' %}
+                {% for org in organism_list|filter_by_taxonomy:'Fish' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}  
             </div>
@@ -31,7 +31,7 @@
             <div class="single_div" id="amphibians">
                 <h3>Amphibians</h3>
 
-                {% for org in organism_list|group_org_by_taxonomy:'Amphibian' %}
+                {% for org in organism_list|filter_by_taxonomy:'Amphibian' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}
             </div>
@@ -40,7 +40,7 @@
             <div class="single_div" id="birds">
                 <h3>Birds</h3>
 
-                {% for org in organism_list|group_org_by_taxonomy:'Bird' %}
+                {% for org in organism_list|filter_by_taxonomy:'Bird' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}
             </div>
@@ -49,7 +49,7 @@
             <div class="single_div" id="urochordates">
                 <h3>Urochordates</h3>
 
-                {% for org in organism_list|group_org_by_taxonomy:'Urochordates' %}
+                {% for org in organism_list|filter_by_taxonomy:'Urochordates' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}
             </div>
@@ -59,7 +59,7 @@
             <div class="single_div" id="reptiles">
                 <h3>Reptiles</h3>
 
-                {% for org in organism_list|group_org_by_taxonomy:'Reptile' %}
+                {% for org in organism_list|filter_by_taxonomy:'Reptile' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}
             </div>
@@ -67,7 +67,7 @@
             <div class="single_div" id="lamprey">
                 <h3>Lamprey</h3>
 
-                {% for org in organism_list|group_org_by_taxonomy:'Lamprey' %}
+                {% for org in organism_list|filter_by_taxonomy:'Lamprey' %}
                     <ul><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></ul>
                 {% endfor %}
             </div>

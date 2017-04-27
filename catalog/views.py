@@ -22,7 +22,7 @@ class OrganismListView(generic.ListView):
     model = Organism
     context_object_name = 'organism_list'
     template_name = 'gene_list'
-    #success_url = reverse_lazy('organisms')
+    
 
 
 class OrganismDetailView(generic.DetailView):
@@ -30,6 +30,7 @@ class OrganismDetailView(generic.DetailView):
     model = Organism
     context_object_name = 'org_details'
     template_name = 'catalog/org_details.html'
+
 
 class PrimaryLinkView(generic.ListView):
     

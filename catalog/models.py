@@ -54,7 +54,7 @@ class Gene(models.Model):
     def __str__(self):
         return self.title
     
-    """   
+       
     def get_fasta_length(sequence):
     
         seq_string = sequence.split('\n', 1)[1] # split string on first newline char only to separate header from seq
@@ -63,8 +63,8 @@ class Gene(models.Model):
         fasta_length = len(seq_formatted) # find length
     
         return fasta_length
-    """
-        
+    
+
     
 class Link(models.Model):
     """

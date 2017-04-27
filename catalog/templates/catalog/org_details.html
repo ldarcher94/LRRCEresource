@@ -8,10 +8,11 @@
 <h1>{{ organism.name }}</h1>
 
     {% block imagetable %}
-        <!-- Image table with links to page sections -->
-        {% load static %}
+        <!-- Image table. In future this will contain links to page sections -->
+        
+        {% if organism.name == "Human" %}
         <table>
-            <tr>
+            <tr>{% load static %}
                 <td class="tab_row_head">Chr 9q22</td>
                 <td><a href="#h201"><img src="{% static 'img/SLRP-buttons/ECM2.png' %}"></a></td>
                 <td><a href="#h202"><img src="{% static 'img/SLRP-buttons/ASPN.png' %}"></a></td>
@@ -44,13 +45,14 @@
                 <td class="tab_empty_cell"></td>
             </tr>
         </table>
+        {% endif %}
     {% endblock %}
         
         {% for gene in org_details.gene_set.all %}
             <!-- First sub-heading -->
             <h2 class="{{ gene.class_field }}" id="h201">{{ gene.title }}</h2>
             
-            <!-- Table with information for First gene -->
+            <!-- Table with information for each gene -->
             <table>
                 <tr>
                     <td class="tab2_left"><i>Name</i></td>
@@ -90,21 +92,21 @@
                 </tr>
                 {% if gene.uniprot_seq %}        
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(uniprot)<br>699 amino acids</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(uniprot)<br>{{ gene.uniprot_seq|fasta_length }}</i></td>
                     <td class="fasta">{{ gene.uniprot_seq }}
                     </td>
                 </tr>
                 {% endif %}
                 {% if gene.ncbi_seq %}
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(NCBI)<br>699 amino acids</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(NCBI)<br>{{ gene.ncbi_seq|fasta_length }}</i></td>
                     <td class="fasta">{{ gene.ncbi_seq }}
                     </td>  
                 </tr>
                 {% endif %}
                 {% if gene.genbank_seq %}
                 <tr>
-                    <td class="tab2_left_fasta"><i>FASTA<br>(genbank)<br>699 amino acids</i></td>
+                    <td class="tab2_left_fasta"><i>FASTA<br>(genbank)<br>{{ gene.genbank_seq|fasta_length }}</i></td>
                     <td class="fasta">{{ gene.genbank_seq }}
                     </td>
                 </tr>
